@@ -6,8 +6,9 @@ eye_cascade = cv2.CascadeClassifier('D:\\Py\\xml\\haarcascade_eye.xml')
 
 #img = cv2.imread('C:\\Users\\Connor\\Desktop\\PyShots\\felix.jpg')
 cap = cv2.VideoCapture(0)
-img = cap.read()
-
+ret, frame1 = cap.read()
+ret, frame2 = cap.read()
+img = cv2.absdiff(frame1, frame2)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 for (x,y,w,h) in faces:
